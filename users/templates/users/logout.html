@@ -1,0 +1,14 @@
+{% extends 'weather/base.html' %}
+{% block heading %}
+{% endblock heading %}
+{% block menu %}
+{% endblock menu %}
+{% block content %}
+<br>
+    <h2 style="text-align:center;">you are logged out </h2>
+        <div class="container-md border-top pt-3" style="max-width: 500px; margin-top:15px">
+            <small class="text-muted">
+                 <a href="{% url 'login' %}" style="text-align:center;"> <h5>Log In Again to weather app</h5>  </a>
+            </small>
+        </div>
+{% endblock content %}

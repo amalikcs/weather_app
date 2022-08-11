@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+</head>
+<body>
+{% block menu %}
+<nav class="navbar" style="background-color: #ADD8E6;">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'home' %}">Home</a>
+        <form class="d-flex" method="post" role="search" action="{% url 'weather-home' %}">
+            {% csrf_token %}
+            <ul class="navbar-nav" style="padding: 10px;">
+                <li class="nav-item ">
+                    <a href= "{% url 'logout' %}" >Logout</a>
+                </li>
+            </ul>
+
+            <input class="form-control me-2" type="search" name="search" placeholder="Choose Your City ..."
+                   aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+{% endblock menu %}
+
+
+<div class="container">
+    {% block heading %}
+    <br>
+
+    <h3 style="text-align:center;">Welcome to weather app</h3>
+    {% block image %}
+<!--    <img src="{% static 'weather/images/weather.png'%}" class="center" style="display:block; width:50% ;  ">-->
+    {% endblock image %}
+
+    {% endblock heading %}
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+<div class="container">
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% block content %}
+    {% endblock content %}
+    {% block display_data %}
+
+    {% endblock display_data %}
+</div>
+</body>
+</html>

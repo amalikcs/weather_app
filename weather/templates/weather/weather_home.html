@@ -1,0 +1,29 @@
+{% extends 'weather/base.html' %}
+{% block display_data %}
+<div class="row">
+    <div class="col d-flex justify-content-center">
+        <div class=" card bg-light mb-6">
+            <div class=" card-body">
+                <h4><span class="">Country Code :</span> {{country_name}}</h4>
+                <h4><span class="">City Name :</span> {{city_name}}</h4>
+                <h4><span class="">Temperature in Celsius :</span> {{temp}}</h4>
+                <h4><span class="">Pressure :</span> {{kind_of_weather}} <img
+                src="http://openweathermap.org/img/w/{{icon}}.png" alt="Image" style="width:70px"></h4>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="container">
+    <h3>Recent searches of cities</h3>
+<ul class="list-group list-group-flush">
+    {% for search in recently_search_cites %}
+        <li class="list-group-item">{{search}}</li>
+    {% endfor %}
+</ul>
+</div>
+{% endblock display_data %}
+
+
+
+
